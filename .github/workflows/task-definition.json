@@ -3,24 +3,18 @@
     "containerDefinitions": [
         {
             "name": "garment",
-            "image": "746669219519.dkr.ecr.eu-west-1.amazonaws.com/garment-finder-backend:fd2cbd436200de95bddff9c6dc781416b8b9d53d",
+            "image": "746669219519.dkr.ecr.eu-west-1.amazonaws.com/garment-finder-backend:35d37dc8a1ee227be3d7ed923dffa71a4f423a6f",
             "cpu": 0,
             "portMappings": [
                 {
                     "name": "garment-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp"
                 }
             ],
             "essential": true,
-            "environment": [
-                {
-                    "name": "PORT",
-                    "value": "80"
-                }
-            ],
+            "environment": [],
             "mountPoints": [],
             "volumesFrom": [],
             "logConfiguration": {
@@ -39,7 +33,7 @@
         }
     ],
     "executionRoleArn": "arn:aws:iam::746669219519:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
+    "networkMode": "host",
     "volumes": [],
     "placementConstraints": [],
     "requiresCompatibilities": [
