@@ -14,7 +14,12 @@
                 }
             ],
             "essential": true,
-            "environment": [],
+            "environment": [
+                {
+                    "name": "MONGODB_URI",
+                    "value": "mongodb+srv://emmanuel-cli:czlu7rbLZiTG7PhC@cluster0.gtb5i.mongodb.net/garments"
+                }
+            ],
             "mountPoints": [],
             "volumesFrom": [],
             "logConfiguration": {
