@@ -10,7 +10,7 @@ describe('Garment Routes', () => {
 
   beforeEach(() => {
     app = express();
-    app.locals.db = {}; // Mock database object
+    app.locals.db = {};
     app.use('/garments', garmentRoutes);
   });
 

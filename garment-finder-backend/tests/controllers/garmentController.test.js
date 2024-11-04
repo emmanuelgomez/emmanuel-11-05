@@ -13,7 +13,7 @@ describe('Garment Controller', () => {
       query: { query: 'test' },
       app: {
         locals: {
-          db: {} // Mock database object
+          db: {}
         }
       }
     };

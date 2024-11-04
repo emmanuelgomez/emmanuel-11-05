@@ -6,6 +6,7 @@ import GarmentSearch from './GarmentSearch';
 
 // Mock axios
 jest.mock('axios');
+jest.mock('./Garment', () => () => <div>GarmentMocked</div>);
 
 
 describe('GarmentSearch Component', () => {
@@ -49,11 +50,7 @@ describe('GarmentSearch Component', () => {
 
     await waitFor(() => {
       expect(axios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_API_URL}/garments/search?query=blue shirt`);
-      expect(screen.getByText('Blue T-shirt')).toBeInTheDocument();
-      expect(screen.getByText('Brand: TestBrand')).toBeInTheDocument();
-      expect(screen.getByText('Price: 20 USD')).toBeInTheDocument();
-      expect(screen.getByText('Discounted Price: 18 USD')).toBeInTheDocument();
-      expect(screen.getByAltText('Blue T-shirt')).toHaveAttribute('src', 'http://example.com/image.jpg');
+      expect(screen.getByText('GarmentMocked')).toBeInTheDocument();
     });
   });
 

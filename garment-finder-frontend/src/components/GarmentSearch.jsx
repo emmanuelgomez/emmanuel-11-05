@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Garment from './Garment';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function GarmentSearch() {
+const GarmentSearch = () => {
   const [query, setQuery] = useState('');
   const [garments, setGarments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -42,13 +43,7 @@ function GarmentSearch() {
       {!loading && !error && garments.length === 0 && <p>No results found.</p>}
       <ul>
         {garments.map((garment) => (
-          <li key={garment.id}>
-            <h3>{garment.title}</h3>
-            <p>Brand: {garment.brand}</p>
-            <p>Price: {garment.price} {garment.currency}</p>
-            <p>Discounted Price: {garment.discountedPrice} {garment.currency}</p>
-            {garment.imageUrl && <img src={garment.imageUrl} alt={garment.title} style={{ maxWidth: '200px' }} />}
-          </li>
+          <Garment garment={garment} />
         ))}
       </ul>
     </div>
