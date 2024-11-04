@@ -1,29 +1,83 @@
-# garment-finder-app
+# Garment Finder Project
 
-**Task**:
-Your task is to build a (single page) website that I can search for a garment (e.g. black hat) and it should display the garments that match the search criteria. 
+This project is a monorepo containing both the frontend and backend components of the Garment Finder application.
 
-**The solution:**
-The website should load garments from a MongoDB database. 
+## Project Structure
 
-You have the freedom to use any build toolchain or helper libraries necessary, but you must stick to our core technologies of ReactJS for the frontend and NodeJS or Python for the backend.
+The project is organized into two main folders:
 
-As part of the deliverable, there should be automated tests for all the possible use cases of the task.
+1. `garment-finder-frontend`: Contains the React.js frontend application
+2. `garment-finder-backend`: Contains the Node.js Express backend application
 
-**Success Criteria:**
-Application architecture and framework best practices for the framework in use are followed and understood.
-Code is formatted well and easy to follow. Variable and function names make sense
-Application gracefully handles database error cases and is resistant to unexpected
-messages.
-Database queries are optimised for performance
-You will be evaluated on the use of design patterns.
-Test coverage of the web page is sufficient and thought has been put into
-what areas of the application should and shouldn’t be tested.
+## Technologies Used
 
-**Bonus Points (optional):**
-Design an infrastructure architecture diagram that can be used to scale the website to thousands of searches per second
+### Frontend
+- React.js
+- Deployed on AWS Amplify
 
-**Submission Requirements:**
-Send an email to your recruiter with a link to a public git repository (in GitHub/BitBucket/GitLab, etc) with the name [firstname]-[submission date].
-Provide a link to a hosted version of the project
-You will be asked to screen share and walk through this app & code in your next interview, please have it ready to be run prior to the interview.
+### Backend
+- Node.js
+- Express.js
+- Containerized using Docker
+- Deployed on AWS ECS (Elastic Container Service) using EC2 instances
+
+### CI/CD
+- GitHub Actions (for backend deployment)
+- AWS Amplify built-in CI/CD (for frontend deployment)
+
+### AWS Services
+- ECR (Elastic Container Registry)
+- ECS (Elastic Container Service)
+- EC2 (Elastic Compute Cloud)
+- Route 53
+- ELB (Elastic Load Balancer)
+- Certificate Manager (for HTTPS)
+
+## Deployment
+
+### Frontend
+- URL: https://garmentfinder.shop
+- Deployment: AWS Amplify with GitHub integration for automatic deployments
+
+### Backend
+- URL: https://app.garmentfinder.shop
+- Deployment Process:
+  1. GitHub Actions workflow builds the Docker image
+  2. Image is pushed to AWS ECR
+  3. AWS ECS deploys the container on EC2 instances
+
+### Domain and DNS
+- Domain registered with GoDaddy
+- DNS managed using AWS Route 53 Hosted Zone
+
+## Traffic Routing
+- AWS Route 53 is used for DNS management
+- AWS ELB (Elastic Load Balancer) routes traffic to the backend
+- HTTPS certificates are implemented for secure connections
+
+## Getting Started
+
+This project uses a Makefile to simplify setup and execution. Make sure you have `make` installed on your system.
+
+1. Clone the repository:
+2. Install dependencies:
+make install
+3. Build the project:
+make build
+4. Start the application:
+make start
+This will start both the frontend and backend services.
+
+## Available Make Commands
+
+- `make install`: Install dependencies for both frontend and backend
+- `make build`: Build both frontend and backend
+- `make test`: Run tests for both frontend and backend
+
+You can also run commands for specific parts of the application:
+
+- Frontend commands: `make install-frontend`, `make start-frontend`, `make build-frontend`, `make test-frontend`
+- Backend commands: `make install-backend`, `make start-backend`, `make build-backend`, `make test-backend`
+
+## Infrastructure Architecture Diagram
+<img  src="simple-Architecture.jpg" alt="image_name png" />
