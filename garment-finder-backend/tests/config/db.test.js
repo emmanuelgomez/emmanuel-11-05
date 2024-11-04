@@ -1,5 +1,5 @@
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const { connectToDatabase, getDb, setDb, closeConnection } = require('../db');
+const { connectToDatabase, getDb, setDb, closeConnection } = require('../../config/db');
 
 let mongod;
 
